@@ -1,6 +1,14 @@
-% Copyright (c) 2020, Yaqing Xy Wang and Nadav Avidor.
+% Copyright (c) 2020, Xy Wang and Nadav Avidor.
 % All rights reserved.
 % This file is part of the JDAM - Jump Diffusion by Analytical Models, subject to the GNU/GPL-3.0-or-later.
+
+%% Clearing previous relavant workspace 
+
+clear params;
+clear lattice;
+%% Define Parameters
+
+params.tSE = 0:600;
 
 % Define surface type: 1 - hexagonal
 surface_type = 1;
@@ -14,7 +22,8 @@ else
     % in additional surfaces
 end
 
-surf_gen(lattice,Temp,tau,E);
+[lattice,params] = surf_gen(lattice,params);
 
-plot_isf(Azmth,azmthStr,dK)
+[Wp_all,D_abs,ISF] = plot_isf(lattice,params);
+
 

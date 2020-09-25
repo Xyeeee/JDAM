@@ -1,17 +1,17 @@
-% Copyright (c) 2020, Yaqing Xy Wang and Nadav Avidor.
+% Copyright (c) 2020, Xy Wang and Nadav Avidor.
 % All rights reserved.
 % This file is part of the JDAM - Jump Diffusion by Analytical Models, subject to the GNU/GPL-3.0-or-later.
 
 
 %% Configure a hexagonal surface, Site order: T B_1 B_2 B_3 H_1 H_2
 
-a1 = [1,0]; % The first lattice vector
-a2 = [-1/2,sqrt(3)/2]; % The second lattice vector
+a1 = lattice.a*[1,0]; % The first lattice vector
+a2 = lattice.a*[-1/2,sqrt(3)/2]; % The second lattice vector
 z = [0,0]; % Zero Vector as a placeholder
 
 %% Single jump vectors k
 % The maximum number of distinct single jumps from site of type i to site of type
-% j is 6, hence the third index goes from 1 to 6, for those (i,j) pairs
+% j is 6, hence the third index k in L_ijk goes from 1 to 6, for those (i,j) pairs
 % with less than 6 jumps, we pad the jump vectors with zero vectos z =
 % [0,0]
 
@@ -48,7 +48,7 @@ lattice.s(5,6,:,:) = [-a1/2+1/3*(a1/2+a2);a1/2+1/3*(a1/2+a2);-2/3*(a1/2+a2);z;z;
 
 %% Complete Lattice Jump Vectors
 
-lattice.m = size(tau,1);
+lattice.m = size(params.tau,1);
 
 % The jump vector from i to j is opposite in direction to that from j to i
 % and same in magnitude
